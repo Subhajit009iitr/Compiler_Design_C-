@@ -13,10 +13,6 @@
 "for"           { return FOR; }
 "while"         { return WHILE; }
 
-"System"        { return SYSTEM; }
-"Console"       { return CONSOLE; }
-"Writeline"     { return WRITELINE; }
-
 "do"            { return DO; }
 "switch"        { return SWITCH; }
 "case"          { return CASE; }

@@ -5,7 +5,7 @@ using System; class Program {
         int sum = AddNumbers(x, y);
         Console.WriteLine("Sum: " + sum);
         }  
-        static int AddNumbers(int a, int b)     {         
+    static int AddNumbers(int a, int b)     {         
         return a + b;     
     } 
 } 
