@@ -1,4 +1,5 @@
 %{
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -63,8 +64,8 @@
 "||"            { return OR; }
 "!"             { return NOT; }
 
-[0-9]+          { yylval.int_val = atoi(yytext); return INTEGER; }
-[a-zA-Z_][a-zA-Z0-9_]*  { yylval.str_val = strdup(yytext); return IDENTIFIER; }
+[0-9]+          { yylval.ival = atoi(yytext); return INTEGER; }
+[a-zA-Z_][a-zA-Z0-9_]*  { yylval.sval = strdup(yytext); return ID; }
 [ \t\n]         ; // skip whitespace
 .               { fprintf(stderr, "Unknown token: %s\n", yytext); }
 

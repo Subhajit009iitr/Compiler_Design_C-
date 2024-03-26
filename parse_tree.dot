@@ -1,0 +1,14 @@
+digraph ParseTree {
+    node [shape=box];  // Set node shape to box
+
+    // Nodes representing parts of the parse tree
+    A [label="A"];
+    B [label="B"];
+    C [label="C"];
+    D [label="D"];
+
+    // Edges representing relationships between nodes
+    A -> B;
+    A -> C;
+    B -> D;
+}
