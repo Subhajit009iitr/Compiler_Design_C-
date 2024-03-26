@@ -8,31 +8,72 @@
 %option noyywrap
 
 %%
+"if"            { return IF; }
+"else"          { return ELSE; }
+"for"           { return FOR; }
+"while"         { return WHILE; }
 
-"using"             { yylval.str = strdup(yytext); return USING; }
-"System"            { yylval.str = strdup(yytext); return SYSTEM; }
-"class"             { yylval.str = strdup(yytext); return CLASS; }
-"static"            { yylval.str = strdup(yytext); return STATIC; }
-"void"              { yylval.str = strdup(yytext); return VOID; }
-"int"               { yylval.str = strdup(yytext); return INT_TYPE; }
-"string"            { yylval.str = strdup(yytext); return STRING_TYPE; }
-"Console"           { yylval.str = strdup(yytext); return CONSOLE; }
-"WriteLine"         { yylval.str = strdup(yytext); return WRITELINE; }
-"return"            { yylval.str = strdup(yytext); return RETURN; }
-[ \t]+              ; // Skip whitespace
-"("                 { yylval.str = strdup(yytext); return LPAREN; }
-")"                 { yylval.str = strdup(yytext); return RPAREN; }
-"{"                 { yylval.str = strdup(yytext); return LBRACE; }
-"}"                 { yylval.str = strdup(yytext); return RBRACE; }
-";"                 { yylval.str = strdup(yytext); return SEMICOLON; }
-[0-9]+              { yylval.str = strdup(yytext); return NUMBER; }
-[a-zA-Z_][a-zA-Z0-9_]*  { yylval.str = strdup(yytext); return IDENTIFIER; }
-.                   { printf("Invalid character: %s\n", yytext); }
+"System"        { return SYSTEM; }
+"Console"       { return CONSOLE; }
+"Writeline"     { return WRITELINE; }
+
+"do"            { return DO; }
+"switch"        { return SWITCH; }
+"case"          { return CASE; }
+"default"       { return DEFAULT; }
+"break"         { return BREAK; }
+"continue"      { return CONTINUE; }
+
+
+"using"         { return USING; }
+"void"          { return VOID; }
+"return"        { return RETURN; }
+"new"           { return NEW; }
+
+
+"int"           { return INT; }
+"float"         { return FLOAT; }
+"string"        { return STRING; }
+"class"         { return CLASS; }
+
+
+"true"          { return TRUE; }
+"false"         { return FALSE; }
+
+"("             { return LPAREN; } 
+")"             { return RPAREN; }
+"{"             { return LBRACE; }
+"}"             { return RBRACE; }
+";"             { return SEMICOLON; }
+","             { return COMMA; }
+
+"."             { return DOT; }
+
+"+"             { return PLUS; }
+"-"             { return MINUS; }
+"*"             { return MULT; }
+"/"             { return DIV; }
+"%"             { return MOD; }
+"="             { return ASSIGN; }
+
+"=="            { return EQUAL; }
+"!="            { return NOTEQUAL; }
+"<"             { return LESS; }
+">"             { return GREATER; }
+"<="            { return LESSEQUAL; }
+">="            { return GREATEREQUAL; }
+
+"&&"            { return AND; }
+"||"            { return OR; }
+"!"             { return NOT; }
+
+[0-9]+          { yylval.int_val = atoi(yytext); return INTEGER; }
+[a-zA-Z_][a-zA-Z0-9_]*  { yylval.str_val = strdup(yytext); return IDENTIFIER; }
+[ \t\n]         ; // skip whitespace
+.               { fprintf(stderr, "Unknown token: %s\n", yytext); }
 
 %%
 
-int main() {
-    // Read from stdin
-    yylex();
-    return 0;
+int yywrap() {
+    return 1;
 }
