@@ -3,16 +3,14 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include "node.h"
 using namespace std;
 
 extern int yylex();
 extern int yyparse();
 
 // Define a struct to represent parse tree nodes
-struct Node {
-    string label;
-    vector<Node*> children;
-};
+
 
 Node* createNode(const string& label) {
     Node* node = new Node;

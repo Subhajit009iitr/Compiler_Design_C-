@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "parser.tab.h"
+#include "node.h"
 %}
 
 %option noyywrap
@@ -73,4 +74,8 @@
 
 int yywrap() {
     return 1;
+}
+
+int main(){
+    yylex();
 }
